@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+   <data>
+      <variable
+          name="movie"
+          type="com.gaurav.paginationrecyclerview.model.Result" />
+
+   </data>
+
+   <androidx.cardview.widget.CardView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       app:cardCornerRadius="8dp"
+       android:layout_margin="8dp"
+       app:cardElevation="4dp"
+       app:cardBackgroundColor="@color/purple_400">
+
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:orientation="horizontal">
+
+         <com.google.android.material.imageview.ShapeableImageView
+             android:id="@+id/iv_movie"
+             android:layout_width="110dp"
+             android:layout_height="160dp"
+             app:shapeAppearance="@style/RoundedImageView"
+             android:background="@color/white"
+             android:scaleType="fitXY"
+             android:layout_margin="4dp" />
+
+
+         <androidx.constraintlayout.widget.ConstraintLayout
+             android:layout_width="0dp"
+             android:layout_height="match_parent"
+             android:layout_weight="1"
+             android:padding="4dp">
+
+            <TextView
+                android:id="@+id/txt_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/dm_sans_bold"
+                tools:text="Movie Name"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:text="@{movie.title}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/txt_lang" />
+
+            <TextView
+                android:id="@+id/txt_lang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/dm_sans_medium"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                tools:text="Lang: EN"
+                android:text="@{`Lang: `+ movie.original_language}"
+                app:layout_constraintTop_toBottomOf="@id/txt_title"
+                app:layout_constraintBottom_toTopOf="@id/txt_rating" />
+
+            <TextView
+                android:id="@+id/txt_rating"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/dm_sans_medium"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                tools:text="Rating: 7"
+                android:text="@{`Rating: `+ movie.vote_average}"
+                app:layout_constraintTop_toBottomOf="@id/txt_lang"
+                app:layout_constraintBottom_toTopOf="@id/txt_year" />
+
+            <TextView
+                android:id="@+id/txt_year"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/dm_sans_medium"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                tools:text="Release: 2023-08-16"
+                android:text="@{`Release: `+ movie.release_date}"
+                app:layout_constraintTop_toBottomOf="@id/txt_rating"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+         </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+      </LinearLayout>
+
+
+   </androidx.cardview.widget.CardView>
+</layout>

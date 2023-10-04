@@ -1,6 +1,11 @@
 package com.gaurav.paginationrecyclerview.di
 
+import android.content.Context
+import com.chuckerteam.chucker.api.ChuckerCollector
+import com.chuckerteam.chucker.api.ChuckerInterceptor
+import com.chuckerteam.chucker.api.RetentionManager
 import com.gaurav.paginationrecyclerview.BuildConfig
+import com.gaurav.paginationrecyclerview.Controller
 import com.gaurav.paginationrecyclerview.utils.Constants
 import com.gaurav.paginationrecyclerview.webservice.APIService
 import dagger.Module
@@ -41,10 +46,12 @@ class NetworkModule {
             return@Interceptor chain.proceed(request)
         }
 
+
         OkHttpClient
             .Builder()
             .addInterceptor(loggingInterceptor)
             .addInterceptor(requestInterceptor)
+            .addInterceptor(ChuckerInterceptor(Controller.instance))
             .build()
 
     }else{

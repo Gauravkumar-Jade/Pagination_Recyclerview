@@ -67,6 +67,10 @@ dependencies {
     //OkHttp Interceptor
     implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.1"
 
+    //Chucker for Network Inspection
+    debugImplementation "com.github.chuckerteam.chucker:library:4.0.0"
+    releaseImplementation "com.github.chuckerteam.chucker:library-no-op:4.0.0"
+
     // Glide
     implementation 'com.github.bumptech.glide:glide:4.16.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.16.0'
